@@ -6,4 +6,5 @@ dependencies = [
     "crewai>=1.14,<2",
     "crewai-tools>=0.33,<1",
     "python-dotenv>=1.0.0",
+    "gradio>=5.22.0",
 ]
