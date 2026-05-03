@@ -1,0 +1,18 @@
+write_code_task:
+  description: >
+    Write Python {python_version} code to achieve this: {assignment}
+    Output only the raw code — no explanation, no markdown fences (```).
+  expected_output: >
+    Clean, executable Python code that solves the assignment.
+  agent: coder
+  output_file: output/coder/solution.py
+
+execute_code_task:
+  description: >
+    Execute the Python code from the previous task and capture its output.
+  expected_output: >
+    The printed output produced by running the code.
+  agent: coder
+  context:
+    - write_code_task
+  output_file: output/coder/output.txt
