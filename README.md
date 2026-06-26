@@ -33,12 +33,12 @@ Inputs are hardcoded per crew in `main.py` — edit them directly before running
 
 | Section | Crew | Paper Pattern | New concepts |
 |---|---|---|---|
-| 1 | `debate` | Prompt chaining | `Agent`, `Task`, `Crew`, `Process.sequential`, YAML config, `output_file` |
-| 2 | `financial_researcher` | Augmented LLM | `SerperDevTool`, `context` passing between tasks |
-| 3 | `router` | Routing | Classify-then-dispatch, multi-crew orchestration, typed route decisions |
-| 4 | `stock_picker` | Orchestrator-subagents | Custom `BaseTool`, `output_pydantic`, `Process.hierarchical`, memory |
-| 5 | `coder` | Evaluator-optimizer | `allow_code_execution`, Docker sandbox, execution loops |
-| 6 | `engineering_team` | Parallelization + orchestrator | Multi-agent specialisation, DAG context, Gradio UI generation |
+| 1 | [`debate`](src/crews/debate/README.md) | Prompt chaining | `Agent`, `Task`, `Crew`, `Process.sequential`, YAML config, `output_file` |
+| 2 | [`financial_researcher`](src/crews/financial_researcher/README.md) | Augmented LLM | `SerperDevTool`, `context` passing between tasks |
+| 3 | [`router`](src/crews/router/README.md) | Routing | Classify-then-dispatch, multi-crew orchestration, typed route decisions |
+| 4 | [`stock_picker`](src/crews/stock_picker/README.md) | Orchestrator-subagents | Custom `BaseTool`, `output_pydantic`, `Process.hierarchical`, memory |
+| 5 | [`coder`](src/crews/coder/README.md) | Evaluator-optimizer | `allow_code_execution`, Docker sandbox, execution loops |
+| 6 | [`engineering_team`](src/crews/engineering_team/README.md) | Parallelization + orchestrator | Multi-agent specialisation, DAG context, Gradio UI generation |
 
 Each crew folder contains a `README.md` explaining which paper pattern it demonstrates, what to observe when you run it, and where to look in the code.
 
