@@ -1,4 +1,4 @@
-# Phase 5 — Engineering Team
+# Section 6 — Engineering Team
 
 **Paper patterns: Parallelization + Orchestrator-subagents**
 
@@ -8,7 +8,7 @@ From [Building Effective Agents](https://www.anthropic.com/engineering/building-
 
 ## What this demonstrates
 
-Phase 3 introduced a manager orchestrating sequential workers. Phase 5 shows the next step: a DAG (directed acyclic graph) where tasks fan out rather than chain linearly. The backend engineer reads the design; the frontend engineer and test engineer both read the backend code, but independently of each other. They never share context directly. This mirrors the information flow of a real engineering team: the test engineer reads the implementation, not the design doc.
+Section 4 introduced a manager orchestrating sequential workers. Section 6 shows the next step: a DAG (directed acyclic graph) where tasks fan out rather than chain linearly. The backend engineer reads the design; the frontend engineer and test engineer both read the backend code, but independently of each other. They never share context directly. This mirrors the information flow of a real engineering team: the test engineer reads the implementation, not the design doc.
 
 **Context chains model information flow explicitly.** `code_task` has `context: [design_task]`. Both `frontend_task` and `test_task` have `context: [code_task]` — they receive the backend implementation, not the design. The engineering lead's thinking never reaches the test engineer directly; it flows through the code that implements it. This is intentional: passing less context to each agent forces the agent to work with what it actually needs, and reduces the noise of information that is technically available but not relevant to the agent's specific task.
 
@@ -49,9 +49,3 @@ Remove `context: [design_task]` from `code_task` in `tasks.yaml` and rerun. Does
 
 Add a fifth agent — a `code_reviewer` — that reads both `design_task` and `code_task` via context and writes a markdown review noting where the implementation diverges from the design.
 
----
-
-## Deeper reading
-
-`projects/05_engineering_team.md` — phase description with full sample output showing design doc, generated Gradio app, and test suite  
-`projects/05_engineering_team_explainer.md` — detailed walkthrough of DAG context design, specialisation vs. generalism trade-offs, mixed execution modes, and downstream agents adapting to actual upstream output

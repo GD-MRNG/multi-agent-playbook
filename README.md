@@ -1,4 +1,4 @@
-# crewai-agent-playbook
+# multi-agent-playbook
 
 A hands-on implementation of the agentic AI workflow patterns described in Anthropic's [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents). Each phase uses CrewAI to demonstrate a specific pattern from the paper — prompt chaining, augmented LLM, orchestrator-subagents, evaluator-optimizer, parallelization — through working code you can run and observe.
 
@@ -19,28 +19,28 @@ cp .env.example .env
 ```bash
 uv run python main.py debate
 uv run python main.py financial_researcher
+uv run python main.py router
 uv run python main.py stock_picker
 uv run python main.py coder
 uv run python main.py engineering_team
-uv run python main.py router
 ```
 
 Inputs are hardcoded per crew in `main.py` — edit them directly before running.
 
 > Phase 4 (`coder`) requires Docker Desktop to be running.
 
-## Phases
+## Sections
 
-| Phase | Crew | Paper Pattern | New concepts |
+| Section | Crew | Paper Pattern | New concepts |
 |---|---|---|---|
 | 1 | `debate` | Prompt chaining | `Agent`, `Task`, `Crew`, `Process.sequential`, YAML config, `output_file` |
 | 2 | `financial_researcher` | Augmented LLM | `SerperDevTool`, `context` passing between tasks |
-| 3 | `stock_picker` | Orchestrator-subagents | Custom `BaseTool`, `output_pydantic`, `Process.hierarchical`, memory |
-| 4 | `coder` | Evaluator-optimizer | `allow_code_execution`, Docker sandbox, execution loops |
-| 5 | `engineering_team` | Parallelization + orchestrator | Multi-agent specialisation, DAG context, Gradio UI generation |
-| 6 | `router` | Routing | Classify-then-dispatch, multi-crew orchestration, typed route decisions |
+| 3 | `router` | Routing | Classify-then-dispatch, multi-crew orchestration, typed route decisions |
+| 4 | `stock_picker` | Orchestrator-subagents | Custom `BaseTool`, `output_pydantic`, `Process.hierarchical`, memory |
+| 5 | `coder` | Evaluator-optimizer | `allow_code_execution`, Docker sandbox, execution loops |
+| 6 | `engineering_team` | Parallelization + orchestrator | Multi-agent specialisation, DAG context, Gradio UI generation |
 
-Each crew folder contains a `README.md` that explains which paper pattern it demonstrates, what to observe when you run it, and where to look in the code.
+Each crew folder contains a `README.md` explaining which paper pattern it demonstrates, what to observe when you run it, and where to look in the code.
 
 ## Environment variables
 
@@ -74,12 +74,11 @@ src/crews/<name>/
   config/tasks.yaml       # description, expected_output, agent, output_file
   README.md               # paper pattern, what to observe, experiments
 
-src/crews/router/         # Phase 6 — routing pattern (multi-crew structure)
+src/crews/router/         # Section 3 — routing pattern (multi-crew structure)
   router.py               # classify-then-dispatch logic
   classifier/             # sub-crew: classifies the query
   technical/              # sub-crew: handles technical queries
   policy/                 # sub-crew: handles policy/compliance queries
 
-projects/                 # extended learning notes, one per phase
 output/                   # generated at runtime, gitignored
 ```

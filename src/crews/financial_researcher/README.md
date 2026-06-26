@@ -1,4 +1,4 @@
-# Phase 2 — Financial Researcher
+# Section 2 — Financial Researcher
 
 **Paper pattern: Augmented LLM**
 
@@ -8,7 +8,7 @@ From [Building Effective Agents](https://www.anthropic.com/engineering/building-
 
 ## What this demonstrates
 
-Phase 1 showed that separating concerns across agents improves reasoning quality. Phase 2 shows the next gap: agents with no access to the outside world silently produce wrong answers whenever the question depends on current information. A model trained through late 2024 does not know today's date — ask it to research "recent news about Apple" without telling it the date and it will anchor "recent" to its training era, not yours. The output looks plausible; the data is stale.
+Section 1 showed that separating concerns across agents improves reasoning quality. Section 2 shows the next gap: agents with no access to the outside world silently produce wrong answers whenever the question depends on current information. A model trained through late 2024 does not know today's date — ask it to research "recent news about Apple" without telling it the date and it will anchor "recent" to its training era, not yours. The output looks plausible; the data is stale.
 
 Three additions fix this: a tool that gives the researcher live web access, an explicit `context` declaration that makes the data dependency readable in config, and `current_date` injected as a runtime input at every layer where the model interprets time-relative language.
 
@@ -41,9 +41,3 @@ Add a `context` field to `research_task` in `tasks.yaml` that references a non-e
 
 Change the company in `main.py` to `"Nvidia"` or `"Tesla"`. No YAML changes needed — `{company}` is interpolated at runtime.
 
----
-
-## Deeper reading
-
-`projects/02_financial_researcher.md` — phase description with sample output  
-`projects/02_financial_researcher_explainer.md` — detailed walkthrough of tools vs. task instructions, temporal drift as a distinct failure mode from hallucination, and why explicit `context` beats implicit sequential dependencies as crews grow

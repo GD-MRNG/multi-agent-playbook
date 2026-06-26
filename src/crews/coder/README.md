@@ -1,4 +1,4 @@
-# Phase 4 — Coder
+# Section 5 — Coder
 
 **Paper pattern: Evaluator-optimizer**
 
@@ -43,9 +43,3 @@ Introduce a deliberate ambiguity in the assignment: `"Calculate pi to 100 decima
 
 Lower `max_retry_limit` to `1` and observe how the agent fails — does it give up gracefully or partially complete the task?
 
----
-
-## Deeper reading
-
-`projects/04_coder.md` — phase description with sample output  
-`projects/04_coder_explainer.md` — detailed walkthrough of code execution as a tool (not a mode), sandbox isolation as a security control, write/execute task split, and circuit breaker design

@@ -1,4 +1,4 @@
-# Phase 3 — Stock Picker
+# Section 4 — Stock Picker
 
 **Paper pattern: Orchestrator-subagents**
 
@@ -8,7 +8,7 @@ From [Building Effective Agents](https://www.anthropic.com/engineering/building-
 
 ## What this demonstrates
 
-Sequential process (Phases 1 and 2) requires the developer to know the optimal task order at design time. For a fixed pipeline, that is fine. For a workflow where the manager might reasonably decide to research companies before ranking them, or re-query the news if the first results are thin, a hardcoded sequence becomes a constraint rather than a feature. Hierarchical process delegates that coordination decision to a manager agent at runtime.
+Sequential process (Sections 1 and 2) requires the developer to know the optimal task order at design time. For a fixed pipeline, that is fine. For a workflow where the manager might reasonably decide to research companies before ranking them, or re-query the news if the first results are thin, a hardcoded sequence becomes a constraint rather than a feature. Hierarchical process delegates that coordination decision to a manager agent at runtime.
 
 Three new mechanics appear together here: a custom tool that pushes results to an external system (Discord), structured Pydantic output that turns task outputs from prose into typed contracts, and a manager agent that decides how to assign and sequence work across three worker agents.
 
@@ -46,9 +46,3 @@ Run the crew twice in the same session with memory enabled. On the second run, o
 
 Switch `Process.hierarchical` to `Process.sequential` and observe: does the fixed order still produce a coherent result? If yes, that confirms hierarchical was not strictly necessary for this crew — the manager's value shows only when the order actually needs to vary at runtime.
 
----
-
-## Deeper reading
-
-`projects/03_stock_picker.md` — phase description with sample output  
-`projects/03_stock_picker_explainer.md` — detailed walkthrough of `BaseTool` as an API module, `output_pydantic` as a stage boundary assertion, hierarchical vs. sequential trade-offs, and memory namespacing

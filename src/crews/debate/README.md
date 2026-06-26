@@ -1,4 +1,4 @@
-# Phase 1 — Debate
+# Section 1 — Debate
 
 **Paper pattern: Prompt chaining**
 
@@ -43,9 +43,3 @@ Add `context: [propose, oppose]` explicitly to the `decide` task in `tasks.yaml`
 
 Swap `judge` to `openai/gpt-4o` and compare the depth of verdict reasoning against `gpt-4o-mini`.
 
----
-
-## Deeper reading
-
-`projects/01_debate.md` — phase description with sample output  
-`projects/01_debate_explainer.md` — detailed walkthrough of Agent/Task/Crew separation, sequential context inheritance, and why YAML config and Python structure are kept apart

@@ -1,4 +1,4 @@
-# Phase 6 — Router
+# Section 3 — Router
 
 **Paper pattern: Routing**
 
@@ -12,12 +12,12 @@ A generalist agent asked to answer both technical and policy questions about gov
 
 The workflow is two LLM calls, not one:
 
-1. **Classify** — a lightweight classifier agent reads the query and returns a structured route decision: `technical` or `policy`, with a one-sentence reasoning. This uses `output_pydantic` (from Phase 3) to produce a typed `RouteDecision` object rather than freeform text.
+1. **Classify** — a lightweight classifier agent reads the query and returns a structured route decision: `technical` or `policy`, with a one-sentence reasoning. This uses `output_pydantic` (from Section 4) to produce a typed `RouteDecision` object rather than freeform text.
 2. **Route** — Python code reads `decision.route` and calls the appropriate specialist crew. The routing logic is explicit and readable; there is no hidden branching inside a single prompt.
 
 The key property of this pattern is that the caller does not need to know which specialist ran. The response lands in `output/router/response.md` regardless of the route taken. The routing decision is a separator, not a visible output.
 
-**Structure differs from Phases 1–5.** Previous crews are single `@CrewBase` classes with a `kickoff()` called directly from `main.py`. The router is a `Router` class that orchestrates three sub-crews: classifier, technical, and policy. Each sub-crew is independently defined and independently runnable. The `Router.kickoff()` method holds the routing logic. This is a natural structure for any workflow where the execution path is not known until an initial classification step completes.
+**Structure differs from the other sections.** Previous crews are single `@CrewBase` classes with a `kickoff()` called directly from `main.py`. The router is a `Router` class that orchestrates three sub-crews: classifier, technical, and policy. Each sub-crew is independently defined and independently runnable. The `Router.kickoff()` method holds the routing logic. This is a natural structure for any workflow where the execution path is not known until an initial classification step completes.
 
 ---
 
