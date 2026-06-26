@@ -7,6 +7,9 @@ debater:
     You're an experienced debator with a knack for giving concise but convincing arguments.
     The motion is: {motion}
   llm: openai/gpt-4o-mini
+  # Swap llm to test multi-provider behaviour — no code changes needed, just the API key in .env:
+  # llm: anthropic/claude-haiku-4-5
+  # llm: google/gemini-2.0-flash
 
 judge:
   role: >
