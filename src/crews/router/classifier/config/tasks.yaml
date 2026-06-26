@@ -1,0 +1,12 @@
+classify_query:
+  description: >
+    Classify the following query. Technical queries concern implementation, architecture,
+    APIs, code, engineering decisions, or system design. Policy queries concern
+    regulations, compliance, governance, legal requirements, data handling rules,
+    or procurement obligations.
+
+    Query: {query}
+  expected_output: >
+    A JSON object with two fields: 'route' (the string 'technical' or 'policy')
+    and 'reasoning' (one sentence explaining the classification decision).
+  agent: query_classifier

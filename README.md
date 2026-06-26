@@ -22,6 +22,7 @@ uv run python main.py financial_researcher
 uv run python main.py stock_picker
 uv run python main.py coder
 uv run python main.py engineering_team
+uv run python main.py router
 ```
 
 Inputs are hardcoded per crew in `main.py` — edit them directly before running.
@@ -37,6 +38,7 @@ Inputs are hardcoded per crew in `main.py` — edit them directly before running
 | 3 | `stock_picker` | Orchestrator-subagents | Custom `BaseTool`, `output_pydantic`, `Process.hierarchical`, memory |
 | 4 | `coder` | Evaluator-optimizer | `allow_code_execution`, Docker sandbox, execution loops |
 | 5 | `engineering_team` | Parallelization + orchestrator | Multi-agent specialisation, DAG context, Gradio UI generation |
+| 6 | `router` | Routing | Classify-then-dispatch, multi-crew orchestration, typed route decisions |
 
 Each crew folder contains a `README.md` that explains which paper pattern it demonstrates, what to observe when you run it, and where to look in the code.
 
@@ -70,6 +72,14 @@ src/crews/<name>/
   crew.py                 # @CrewBase class with agents, tasks, crew
   config/agents.yaml      # role, goal, backstory, llm
   config/tasks.yaml       # description, expected_output, agent, output_file
-projects/                 # learning notes, one per phase
+  README.md               # paper pattern, what to observe, experiments
+
+src/crews/router/         # Phase 6 — routing pattern (multi-crew structure)
+  router.py               # classify-then-dispatch logic
+  classifier/             # sub-crew: classifies the query
+  technical/              # sub-crew: handles technical queries
+  policy/                 # sub-crew: handles policy/compliance queries
+
+projects/                 # extended learning notes, one per phase
 output/                   # generated at runtime, gitignored
 ```

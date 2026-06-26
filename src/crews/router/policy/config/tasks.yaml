@@ -1,0 +1,13 @@
+analyse_policy_query:
+  description: >
+    Answer the following policy or compliance query. Identify the relevant obligations,
+    frameworks, or rules that apply. Explain what they require and any key implications
+    for an engineering team implementing a government digital service.
+
+    Query: {query}
+  expected_output: >
+    A concise policy response (200-400 words) covering: the applicable obligations
+    or frameworks, what they require in practice, and any key caveats or areas
+    requiring specialist legal or compliance input.
+  agent: policy_analyst
+  output_file: output/router/response.md

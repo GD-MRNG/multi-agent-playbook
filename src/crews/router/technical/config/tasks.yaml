@@ -1,0 +1,12 @@
+analyse_technical_query:
+  description: >
+    Answer the following technical query. Provide a clear, specific answer with
+    practical implementation guidance where relevant. Focus on what an engineer
+    would need to know to act on this.
+
+    Query: {query}
+  expected_output: >
+    A concise technical response (200-400 words) covering: the core answer,
+    key implementation considerations, and any important trade-offs or caveats.
+  agent: technical_analyst
+  output_file: output/router/response.md

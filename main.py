@@ -9,12 +9,13 @@ from src.crews.financial_researcher.crew import FinancialResearcher
 from src.crews.stock_picker.crew import StockPicker
 from src.crews.coder.crew import Coder
 from src.crews.engineering_team.crew import EngineeringTeam
+from src.crews.router.router import Router
 
 
 def main():
     if len(sys.argv) < 2:
         print("Usage: python main.py <crew>")
-        print("Available crews: debate, financial_researcher, stock_picker, coder, engineering_team")
+        print("Available crews: debate, financial_researcher, stock_picker, coder, engineering_team, router")
         sys.exit(1)
 
     crew_name = sys.argv[1]
@@ -60,9 +61,18 @@ def main():
             "class_name": "Account",
         }
         EngineeringTeam().crew().kickoff(inputs=inputs)
+    elif crew_name == "router":
+        inputs = {
+            # Swap this query to test routing — technical queries go to the technical analyst,
+            # policy queries go to the policy analyst. The classifier decides.
+            "query": "How should we implement JWT token expiry and refresh for a stateless microservice handling citizen authentication?",
+            # Try this policy query to see the other route:
+            # "query": "What data residency obligations apply when storing citizen health records in a commercial cloud provider?",
+        }
+        Router().kickoff(inputs=inputs)
     else:
         print(f"Unknown crew: {crew_name}")
-        print("Available crews: debate, financial_researcher, stock_picker, coder, engineering_team")
+        print("Available crews: debate, financial_researcher, stock_picker, coder, engineering_team, router")
         sys.exit(1)
 
 
